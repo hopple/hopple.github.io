@@ -5,6 +5,7 @@ body {
 
 .container {
     width:100%;
+    max-width:1024px;
     padding:0;
 }
 
@@ -89,6 +90,7 @@ a.category {
     display: block;
     height: auto;
     max-width: 100%;
+    margin:0 auto;
 }
 
 .article-title {
@@ -311,7 +313,6 @@ a.category {
     line-height: 60px;
     color: #fff;
 }
-
 
 @media(min-width:768px) {
     #wrapper {
