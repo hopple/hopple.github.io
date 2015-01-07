@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:og="http://ogp.me/ns#"
+      xmlns:fb="https://www.facebook.com/2008/fbml">
+<head>
+    <title>Building Static Blog Using Pelican and Github</title>
+    <!-- Using the latest rendering mode for IE -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- CDN for bootstrap font_awesome -->
+    <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css" rel="stylesheet">
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+   <!--  <link href="http://hackingsloth.com/theme/css/pygments.css" rel="stylesheet">  -->
+    <link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro|Signika+Negative|Chela+One|Orbitron' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="http://hackingsloth.com/theme/css/style.css" type="text/css"/>
+    <!-- JavaScript plugins (requires jQuery) -->
+    <script src="http://code.jquery.com/jquery.js"></script>
+
+
+    <script type="text/javascript">
+
+        var _gaq = _gaq || [];
+        _gaq.push(['_setAccount', 'UA-45907263-1']);
+        _gaq.push(['_trackPageview']);
+
+        (function () {
+            var ga = document.createElement('script');
+            ga.type = 'text/javascript';
+            ga.async = true;
+            ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(ga, s);
+        })();
+
+    </script>
+
+</head>
+<body>
+    <div>
+        <ul class="social-bar-nav">
+            <li><a href="#menu-toggle" id="menu-toggle"><i class="fa fa-bars fa-lg"></i></a></li>
+            <li><a href="https://twitter.com/hackingsloth" title="twitter"><i class="fa fa-twitter fa-lg"></i></a></li>
+            <li><a href="http://www.linkedin.com/pub/ganggao-zhu/59/815/2b2" title="linkedin"><i class="fa fa-linkedin fa-lg"></i></a></li>
+            <li><a href="http://github.com/hopple" title="github"><i class="fa fa-github fa-lg"></i></a></li>
+            <li><a href="http://www.weibo.com/u/1507073970" title="weibo"><i class="fa fa-weibo fa-lg"></i></a></li>
+            <li><a class="back-top" href="#">
+                <i class="fa fa-chevron-up fa-lg"></i>
+            </a></i>
+        </ul>
+
+    </div>
+    <div id="wrapper">
+
+        <div id="sidebar-wrapper">
+                <ul class="sidebar-nav">
+                    <li><img src="https://avatars2.githubusercontent.com/u/1221685?s=140" class="img-circle" id="logo-image"></li>
+                    <li class="sidebar-brand">朱罡杲</li>
+                    <li><a  href="http://hackingsloth.com">Home</a></li>
+                    <li >
+                        <a href="http://hackingsloth.com/pages/About.html">About</a>
+                    </li>
+                    <li >
+                        <a href="http://hackingsloth.com/category/opinions.html">Opinions</a>
+                    </li>
+                    <li class="active">
+                        <a href="http://hackingsloth.com/category/tutorial.html">Tutorial</a>
+                    </li>
+                    <li ><a href="http://hackingsloth.com/archives.html">Archives</a></li>
+                </ul>
+        </div>
+        <div id="page-content-wrapper">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12">
+    <div class="content">
+            <h1 class="article-title">Building Static Blog Using Pelican and Github</h1>
+            <h2 class="article-author">
+                    Ganggao Zhu
+            </h2>
+            <h3 class="article-info">on&nbsp;2013 November 20&nbsp;in&nbsp;<a class="category" href="http://hackingsloth.com/category/tutorial.html" title="Tutorial">Tutorial</a></h3>
+
+            <div class="article-content">
+                 <p><a href="http://docs.getpelican.com/en/3.3.0/">Pelican</a> is a python based static content generator like <a href="http://jekyllrb.com/">jekyll</a> which can transform the plain text into static websites and blogs. Github provides static content hosting which can be used to host your static blog for free. I will talk about the idea behind the Pelcian first and then describe the main process of building a static blog with Pelican.</p>
+<p>Basically, the static blog only contains static contents such as htmls, images, css files or javascript files. It does not have any database system to manage its contents, all the files are pure plain textual files. Differently, the WordPress blog system is a dynamic blog system since it needs a database system such as MySQL or PostgreSQL to store its contents. </p>
+<p>The general idea of Pelican is to transform static <a href="http://daringfireball.net/projects/markdown/">Markdown</a> or <a href="http://docutils.sourceforge.net/rst.html">reStructuredText</a> files into HTML files using <a href="http://jinja.pocoo.org/">Jinja template engine</a>. I will explain the Pelican process by comparing to the process that you use <a href="https://www.djangoproject.com/">Django</a> to develop a blog system. While developing a blog system with Django, you need to create a database and design the table schemas first for storing your blog contents. Then you write your Django model for mapping your python object to the database records. In Pelican, it doesn't have database system, it requires you to write the schema information ( title, date, category, tag, author etc.) in the beginning of the file. You need to follow the rules provided by Pelican in writing and storing files so that Pelican can read the data in your file into their inner python models. </p>
+<p>Having the models, you will need to design the views by using the Django templates. Pelican use Jinjia to do the same work since Jinjia is a similar template engine as the one in Django. Therefore, if you want to change your views, you need to modify the template files as well. And if you are familiar with the Django template engine, you should be fine with the Jinjia template engine as well. Anyway, Pelican has implemented the basic templates and themes for you to start your sites or blogs easily. However, if you want to personalize your site, you need to have some basic knowledge of <a href="http://jinja.pocoo.org/">Jinja template engine</a> and the <a href="http://docs.getpelican.com/en/3.3.0/settings.html">Pelican settings</a>.</p>
+<p>Now, let us start the journey with Pelican. Actually, it is extremely easy. You can refer to <a href="http://docs.getpelican.com/en/3.3.0/getting_started.html#installing-pelican">Pelican Get Started Doc</a> for more details. Here I will describe my own experience in using Pelican. There is also a quick <a href="http://hackercodex.com/guide/pelican-static-site-generator-install/">video cast</a> for you to know the whole process.</p>
+<p>I suppose you have installed <a href="http://www.python.org/getit/">python</a> and <a href="http://www.pip-installer.org/en/latest/installing.html">pip</a>. There are some folks suggesting to use VirtualEnv, but it depends on your choice. And also I will use Markdown to write my articles, so I will install Markdown module as well. Finally, just tpye the following commands to install the pelican and Markdown if you also want to use it to write your article. </p>
+<div class="highlight"><pre><span class="go">pip install pelican Markdown</span>
+</pre></div>
+
+
+<p>Then you should go to your wokring directory and start buidling your own site by running Pelican's quickstart.</p>
+<div class="highlight"><pre><span class="go">pelican-quickstart</span>
+<span class="go">yourproject/</span>
+<span class="go">├── content</span>
+<span class="go">│   └── (pages)</span>
+<span class="go">├── output</span>
+<span class="go">├── develop_server.sh</span>
+<span class="go">├── fabfile.py</span>
+<span class="go">├── Makefile</span>
+<span class="go">├── pelicanconf.py       # the main setting file</span>
+<span class="go">└── publishconf.py       # for publishing</span>
+</pre></div>
+
+
+<p>Follow the guide provide by the quickstart and if everything is ok, you should get a directory containing files like above. You need to store your blog articles inside the content folder. Specifically, the "pages" folder is the place where you store your page files like "about page". Put your contents in proper folder so that Pelican can transform them correctly. Try to have your own first post article and store it in side the content folder, then you can run the Pelican command as below.</p>
+<div class="highlight"><pre><span class="go">pelican content -o &lt;output location&gt; -s pelicanconf.py</span>
+<span class="go">cd output</span>
+<span class="go">python -m SimpleHTTPServer</span>
+</pre></div>
+
+
+<p>If you don't specify the output location, your web site will be saved in the output folder. In my case, I use the default output for viewing locally. If I need to publish my blog, I will just specify the output to my Github hosting folder. Pelican provides the basic theme, so you can start viewing your site by using python's built in web server. If you want to have your own theme, you need to follow <a href="http://docs.getpelican.com/en/3.3.0/themes.html">How to create themes for pelican</a> guide. </p>
+<p>When you want to publish your blog online, you can start with Github's static content hosting service. Just create a Github repository with your github account and name it with yourusername.github.io, so the github knows this is your personal page. You can just push your whole output folder to that repository. Then your can view your blog with the url address of yourusername.github.io. You can also have your own domain name. For the details of hosting your blog in Github, refer to <a href="https://help.github.com/categories/20/articles">Github Page Help</a>. </p>
+<p>I need to thank the Pelican and Github, because I could start this blog so easily in such a low cost. Why don't you start building your own blog right now?</p>
+                 <div class="article-tag">
+                    <span class="prep">about</span>
+                    <span class="article-tags">
+                        <a href="http://hackingsloth.com/tag/python.html">python</a>
+                        <span class="dot">.</span>
+                        <a href="http://hackingsloth.com/tag/github.html">github</a>
+                        <span class="dot">.</span>
+                        <a href="http://hackingsloth.com/tag/pelican.html">pelican</a>
+                    </span>
+                </div>
+            </div>
+            <!-- /.entry-content -->
+    <hr />
+    <section class="comments" id="comments">
+        <h2>Comments</h2>
+        <div id="disqus_thread"></div>
+        <script type="text/javascript">
+            /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+            var disqus_shortname = 'hackingsloth'; // required: replace example with your forum shortname
+            var disqus_identifier = 'build-static-blog-using-pelican-github';
+            var disqus_url = 'http://hackingsloth.com/posts/2013/11/build-static-blog-using-pelican-github.html';
+
+            /* * * DON'T EDIT BELOW THIS LINE * * */
+            (function () {
+                var dsq = document.createElement('script');
+                dsq.type = 'text/javascript';
+                dsq.async = true;
+                dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+                (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+            })();
+        </script>
+        <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by
+            Disqus.</a></noscript>
+        <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+
+    </section>
+    </div>
+
+                    </div>
+                </div>
+            </div>
+            <div id="footer-wrapper">
+                <div class="container">
+                    <footer>
+                        <p class="copyright">Copyright ©2013-2014 Ganggao Zhu. All rights reserved.</p>
+                    </footer>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+<!-- use CDN for boostrap js -->
+<script src="//netdna.bootstrapcdn.com/bootstrap/3.0.2/js/bootstrap.min.js"></script>
+
+<!-- Enable responsive features in IE8 with Respond.js (https://github.com/scottjehl/Respond) -->
+<script src="//cdnjs.cloudflare.com/ajax/libs/respond.js/1.3.0/respond.js"></script>
+
+<!-- Menu Toggle Script -->
+<script>
+$("#menu-toggle").click(function(e) {
+    e.preventDefault();
+    $("#wrapper").toggleClass("toggled");
+});
+
+$(document).ready(function() {
+    // Show or hide the sticky footer button
+    $(window).scroll(function() {
+        if ($(this).scrollTop() > 200) {
+            $('.back-top').fadeIn(500);
+        } else {
+            $('.back-top').fadeOut(300);
+        }
+    });
+
+    // Animate the scroll to top
+    $('.back-top').click(function(event) {
+        event.preventDefault();
+
+        $('html, body').animate({scrollTop: 0}, 300);
+    })
+});
+
+</script>
+
+    <script type="text/javascript">
+        /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+        var disqus_shortname = 'hackingsloth'; // required: replace example with your forum shortname
+
+        /* * * DON'T EDIT BELOW THIS LINE * * */
+        (function () {
+            var s = document.createElement('script');
+            s.async = true;
+            s.type = 'text/javascript';
+            s.src = '//' + disqus_shortname + '.disqus.com/count.js';
+            (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+        }());
+    </script>
+</body>
+</html>
