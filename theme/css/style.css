@@ -86,7 +86,9 @@ a.category {
 }
 
 .content .article-content p img {
-    width: 600px;
+    display: block;
+    height: auto;
+    max-width: 100%;
 }
 
 .article-title {
