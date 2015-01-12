@@ -1,6 +1,19 @@
 body {
-    background: white;
+    background-image: url(https://dl.dropboxusercontent.com/u/74428083/mysite/background/noise.jpg);
+    background-position-x: initial;
+    background-position-y: initial;
+    background-size: initial;
+    background-repeat-x: initial;
+    background-repeat-y: initial;
+    background-attachment: initial;
+    background-origin: initial;
+    background-clip: initial;
+    background-color: initial;
     font-size: 16px;
+}
+
+h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6  {
+    font-weight: bold;
 }
 
 .container {
