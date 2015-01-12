@@ -13,6 +13,10 @@ body {
 }
 
 h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6  {
+    margin-bottom: 30px;
+    margin-top: 30px;
+    padding-top: 10px;
+    padding-bottom:10px;
     font-weight: bold;
 }
 
@@ -88,8 +92,10 @@ a.category {
 
 
 .content .article-content p {
-    line-height: 1.5;
+    line-height: 2.0;
     color: #000;
+    padding-top: 10px;
+    padding-bottom:10px;
 }
 
 .content .article-summary p {
