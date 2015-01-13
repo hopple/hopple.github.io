@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:og="http://ogp.me/ns#"
+      xmlns:fb="https://www.facebook.com/2008/fbml">
+<head>
+    <title>歪说熵和元胞自动机理论</title>
+    <!-- Using the latest rendering mode for IE -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- CDN for bootstrap font_awesome -->
+    <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css" rel="stylesheet">
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+   <!--  <link href="http://hackingsloth.com/theme/css/pygments.css" rel="stylesheet">  -->
+    <link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro|Signika+Negative|Chela+One|Orbitron' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="http://hackingsloth.com/theme/css/style.css" type="text/css"/>
+    <!-- JavaScript plugins (requires jQuery) -->
+    <script src="http://code.jquery.com/jquery.js"></script>
+
+
+    <script type="text/javascript">
+
+        var _gaq = _gaq || [];
+        _gaq.push(['_setAccount', 'UA-45907263-1']);
+        _gaq.push(['_trackPageview']);
+
+        (function () {
+            var ga = document.createElement('script');
+            ga.type = 'text/javascript';
+            ga.async = true;
+            ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(ga, s);
+        })();
+
+    </script>
+
+</head>
+<body>
+    <div>
+        <ul class="social-bar-nav">
+            <li><a href="#menu-toggle" id="menu-toggle"><i class="fa fa-bars fa-lg"></i></a></li>
+            <li><a href="https://twitter.com/hackingsloth" title="twitter"><i class="fa fa-twitter fa-lg"></i></a></li>
+            <li><a href="http://www.linkedin.com/pub/ganggao-zhu/59/815/2b2" title="linkedin"><i class="fa fa-linkedin fa-lg"></i></a></li>
+            <li><a href="http://github.com/hopple" title="github"><i class="fa fa-github fa-lg"></i></a></li>
+            <li><a href="http://www.weibo.com/u/1507073970" title="weibo"><i class="fa fa-weibo fa-lg"></i></a></li>
+            <li><a class="back-top" href="#">
+                <i class="fa fa-chevron-up fa-lg"></i>
+            </a></i>
+        </ul>
+
+    </div>
+    <div id="wrapper">
+
+        <div id="sidebar-wrapper">
+                <ul class="sidebar-nav">
+                    <li><img src="https://avatars2.githubusercontent.com/u/1221685?s=140" class="img-circle" id="logo-image"></li>
+                    <li class="sidebar-brand">朱罡杲</li>
+                    <li><a  href="http://hackingsloth.com">Home</a></li>
+                    <li class="active">
+                        <a href="http://hackingsloth.com/category/opinion.html">Opinion</a>
+                    </li>
+                    <li >
+                        <a href="http://hackingsloth.com/category/opinions.html">Opinions</a>
+                    </li>
+                    <li >
+                        <a href="http://hackingsloth.com/category/travel.html">Travel</a>
+                    </li>
+                    <li >
+                        <a href="http://hackingsloth.com/category/tutorial.html">Tutorial</a>
+                    </li>
+                    <li ><a href="http://hackingsloth.com/archives.html">Archives</a></li>
+                </ul>
+        </div>
+        <div id="page-content-wrapper">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12">
+    <div class="content">
+            <h1 class="article-title">歪说熵和元胞自动机理论</h1>
+            <h2 class="article-author">
+                    朱罡杲
+            </h2>
+            <h3 class="article-info">on&nbsp;2015 January 13&nbsp;in&nbsp;<a class="category" href="http://hackingsloth.com/category/opinion.html" title="Opinion">Opinion</a></h3>
+
+            <div class="article-content">
+                 <p>首先，我是学信息学的，主要做基于语义的信息检索，研究语义信息的。</p>
+<p>熵这个难认的字，我记得我是从高中物理开始接触的，然后就是大学的时候，我的专业是计算机，在网络课，信号与系统课，香浓理论都会涉及。再后来，我上研究生了，我开始系统地学习数据挖掘，在学习Decision Tree算法的时候又遇到了它。又后来，我学习到了有人将熵理论应用到了社会学，比如<a href="http://www.ruanyifeng.com/blog/2013/04/entropy.html">熵的社会学意义</a>和<a href="http://www.douban.com/group/topic/40070947/">从热力学理论“熵”的概念，剖析科学家信教现象</a>就简单介绍了熵的社会学应用原理。</p>
+<p>所以，普遍来看，熵理论告诉我们当某一样事物越有序的时候，另一样事物可能会越无序，根据能量守恒。</p>
+<p>举现实生活的例子来看，比如你的学历越高，可能你脑中的知识系统越有序，这样一来，如果以社会中的普通人为参照物，你大脑的知识系统比一般人有序，那么你的某一方面可能比一般人无序，这种无序可能是性取向，可能是所谓的待人接物情商等问题。请原谅我以性取向作为例子，我只是纯粹的理论分析举例，我对同性恋的看法就是万物存在即有其道理，我不会歧视，这是我对之前一个同性恋同事说的。比如我崇拜的科学家图灵，他就是个同性恋。再比如，很多时候，你会发现同性恋往往具有普通人所没有的天分，比如文学，艺术，数学，音乐等等。那么这是不是也反过来证明，如果我们认为同性恋是一种性取向上的无序的话，那么他们在一些专业技能上会变得超出常人的有序。</p>
+<p><strong>熵真是一个强大的自然科学理论，还有社会学解释，它对我价值观的影响就是，作为一个普通人，我还是愉快地选择老祖宗的中庸之道，在和谐社会，做个普通人就好了。</strong></p>
+<p>我不知道有多少人听说过<a href="http://baike.baidu.com/view/389880.htm">元胞自动机</a>, <a href="http://www.guokr.com/group/381/">这里</a>有一些有趣的例子和帖子。</p>
+<blockquote>
+<p>元胞自动机(Cellular Automaton，复数为Cellular Automata，简称CA，也有人译为细胞自动机、点格自动机、分子自动机或单元自动机)。是一时间和空间都离散的动力系统。散布在规则格网 (Lattice Grid)中的每一元胞(Cell)取有限的离散状态，遵循同样的作用规则，依据确定的局部规则作同步更新。大量元胞通过简单的相互作用而构成动态系统的演化。</p>
+</blockquote>
+<p>我认为这个自然科学原理，对我来说的震撼在于有限模式和规则可以通过元胞间的相互作用而产生可能是无穷的演化。这里的“相互作用”对我来说有种醍醐灌顶感觉。我不知道有谁会有与我相似的感觉，但是在我学习这个理论的时候，我真的是有这种真切的感觉。我过去是个混沌理论的支持者，始终相信算命，星座，占星术是一种混沌理论。当我学习到元胞自动机的时候，顿时感到它比混沌理论可能更加清晰明确可见地解释了一些命理推演问题。这些算命，星座，占星术，我认为是一种对人类社会的函数映射，它们用有限的模式，有限的推演规则来推算演化。正如元胞自动机的发明人所认为的，<a href="http://www.guokr.com/article/439770/">斯蒂芬·沃尔夫勒姆：宇宙的本质是计算</a>。我认为，如果混沌理论是黑箱模型的话，没准，元胞理论可能是破解这个黑箱的蔡廷常数呢。</p>
+<p>看到这里，有人可能会认为我是一个信命，信算命的人，其实不完全是。</p>
+<blockquote>
+<p>沃尔夫勒姆：我在我的书里讨论了一个概念，叫做“计算不可化约性”（Computational irreducibility）。这意味着，就算你知道了一切规则，你可能也无法提前预测这些规则将会做什么——唯一的办法是实地运行这些规则看看它们到底会做出什么来。</p>
+<p>我们的历史必须按顺序逐渐上演，你不能说“我已经知道结局了，快进到头吧”；历史是必不可少的。世界的底层规则是简单的、决定性的，但是这些规则生成的人类行为却极端复杂，这之间的计算鸿沟无法化约，因此我们的行为是“自由”的。</p>
+</blockquote>
+<p>我们每个人都是独特的个体，我们所做的选择，说的话，行动，无论是出于感性的任性而为，还是基于博弈论的理性行为，都会或多或少得对周围的人造成影响，进而影响他们的选择，说话，行动。社会是由人构成的，历史则是社会人选择，说话，行动在时间维度上的演化。所以人作为元胞的相互作用是社会演化的关键，因此，未来是不可“准确”预测的，而是需要它自身进行演化的。道理很简单，也许算命，星座，占星术，是一种命里推算的有效模型，但是元胞自动机的原理就是下一个状态是由上一个状态演化产生的。如果想象成帮你推算的人是基于上一个状态演化的，当你得知这些结果的时候就是进入了某一个时间单位的下一个状态，此时，得知信息的你又会对你当前世界的周围人产生作用，周围的人又会对你产生作用，世界的下一个状态的演化也从而改变，因此你的未来理论上是无法准确预测的。当然有可能某些局部状态的演化，恰好吻合了，但是我认为普遍意义上的预测未来不应该是准确有效的。</p>
+<p>学习了这个理论，我更加坚信，时间是不能倒流的，我们是不会回到过去的。因为回到过去，你会影响过去世界的计算演化，进而影响未来的你，那么你进入了一个递归的悖论。但是，我觉得时间维度上的时间单位可能不同。我喜欢星际穿越，因为主人公并没有穿越回过去，只是男主穿越时的时间单位与地球时间相比变快了。剧本让男主时空错乱，传递一些信息给他过去的女儿，这部分我不能理解，但是最后男主的女儿救了男主，并不是他女儿到了未来，只是他们的时间单位又一样了。</p>
+<p><strong>说了这么多，总之，这个自然科学理论对我价值观的影响是关于信不信命的。我机智地选择要信命，但我的行为是自由的。因为世界是你我他相互作用演算进入未来的，我是无法掌控自己的未来的，但是也正是因为这个，我在此刻的选择和行动，会影响周围的人，此刻的世界，从而影响下个阶段的未来世界，这可能是谋事在人，成事在天的自然科学歪说吧。</strong></p>
+                 <div class="article-tag">
+                </div>
+            </div>
+            <!-- /.entry-content -->
+    <hr />
+    <section class="comments" id="comments">
+        <h2>Comments</h2>
+        <div id="disqus_thread"></div>
+        <script type="text/javascript">
+            /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+            var disqus_shortname = 'hackingsloth'; // required: replace example with your forum shortname
+            var disqus_identifier = '歪说熵和元胞自动机理论';
+            var disqus_url = 'http://hackingsloth.com/posts/2015/01/歪说熵和元胞自动机理论.html';
+
+            /* * * DON'T EDIT BELOW THIS LINE * * */
+            (function () {
+                var dsq = document.createElement('script');
+                dsq.type = 'text/javascript';
+                dsq.async = true;
+                dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+                (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+            })();
+        </script>
+        <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by
+            Disqus.</a></noscript>
+        <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+
+    </section>
+    </div>
+
+                    </div>
+                </div>
+            </div>
+            <div id="footer-wrapper">
+                <div class="container">
+                    <footer>
+                        <p class="copyright">Copyright ©2013-2015 Ganggao Zhu. All rights reserved.</p>
+                    </footer>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+<!-- use CDN for boostrap js -->
+<script src="//netdna.bootstrapcdn.com/bootstrap/3.0.2/js/bootstrap.min.js"></script>
+
+<!-- Enable responsive features in IE8 with Respond.js (https://github.com/scottjehl/Respond) -->
+<script src="//cdnjs.cloudflare.com/ajax/libs/respond.js/1.3.0/respond.js"></script>
+
+<!-- Menu Toggle Script -->
+<script>
+$("#menu-toggle").click(function(e) {
+    e.preventDefault();
+    $("#wrapper").toggleClass("toggled");
+});
+
+$(document).ready(function() {
+    // Show or hide the sticky footer button
+    $(window).scroll(function() {
+        if ($(this).scrollTop() > 200) {
+            $('.back-top').fadeIn(500);
+        } else {
+            $('.back-top').fadeOut(300);
+        }
+    });
+
+    // Animate the scroll to top
+    $('.back-top').click(function(event) {
+        event.preventDefault();
+
+        $('html, body').animate({scrollTop: 0}, 300);
+    })
+});
+
+</script>
+
+    <script type="text/javascript">
+        /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+        var disqus_shortname = 'hackingsloth'; // required: replace example with your forum shortname
+
+        /* * * DON'T EDIT BELOW THIS LINE * * */
+        (function () {
+            var s = document.createElement('script');
+            s.async = true;
+            s.type = 'text/javascript';
+            s.src = '//' + disqus_shortname + '.disqus.com/count.js';
+            (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+        }());
+    </script>
+</body>
+</html>
