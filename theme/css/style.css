@@ -90,6 +90,9 @@ a.category {
     padding-bottom: 20px;
 }
 
+.article-content p a {
+    color: #2fa4e7;
+}
 
 .content .article-content p {
     line-height: 2.0;
