@@ -153,23 +153,93 @@
 <p>波兰用的是兹罗提，跟欧元大概4比1，计算机专业出身的我们，整趟旅行中，最喜欢干的事情就是比较每一处兑换点的汇率差别，就是为了那一两块的出入，其实没有必要，但是很好玩。</p>
 <p>整个华沙部分旅行，我最后悔的就是没有在火车站外把所有欧元都换了，因为那里最划算。</p>
 <p>现在看看，穷游的账单，有的时候也是旅行中有趣的回忆。</p>
-<ul>
-<li>华沙青旅，一共420，我一共交了250，每人需要140，帮宪哥交110</li>
-<li>华沙超市买波兰饺子，嵘姐一共为我们花费42，3</li>
-<li>华沙耶诞晚餐喝汤吃热狗烤土豆一共花了88，3，宪哥20，嵘姐68，3</li>
-<li>华沙耶诞喝咖啡吃煎饼，宪哥为我们花费9.69欧元(43兹罗提) 1欧手续费</li>
-<li>华沙到克拉科夫火车票，宪哥为我俩花费84兹罗提</li>
-<li>克拉科夫，买集中营和肖邦音乐会门票，宪哥花费109.27欧元 1欧手续费</li>
-<li>克拉科夫，耶诞市场，我为三人买香肠17，41，买热香肠10，买烤肉14，6</li>
-<li>克拉科夫koko晚饭，宪哥给三人掏了58，5</li>
-<li>克拉科夫家乐福，我为三人花费54，3</li>
-<li>克拉科夫，耶诞市场，买烤肉，嵘姐为三人花费91，8</li>
-<li>克拉科夫大商场，买雪糕，嵘姐为三人花费18</li>
-<li>克拉科夫24小时邮局，我借嵘姐15买邮票</li>
-<li>克拉科夫，公车，嵘姐为三人花费4，2</li>
-<li>克拉科夫，家乐福，我为三人买早饭花费15，25</li>
-<li>克拉科夫，青旅，我为三人花费289，6</li>
-</ul>
+<div class="highlight"><pre><span class="err">```</span>
+<span class="err">#</span><span class="nx">coding</span><span class="o">=</span><span class="nx">utf</span><span class="o">-</span><span class="mi">8</span>
+<span class="err">#</span><span class="nx">Travel</span> <span class="k">in</span> <span class="nx">Porland</span>
+<span class="err">#</span><span class="nx">pays</span> <span class="nx">tuple</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span> <span class="p">(</span><span class="nx">zhu</span><span class="p">,</span> <span class="nx">reng</span><span class="p">,</span> <span class="nx">xian</span><span class="p">)</span>
+
+<span class="nx">texts</span> <span class="o">=</span> <span class="p">{</span>
+   <span class="mi">1</span><span class="o">:</span><span class="s1">&#39;华沙青旅，一共420，我一共交了250，每人需要140，帮宪哥交110&#39;</span><span class="p">.</span><span class="nx">decode</span><span class="p">(</span><span class="s1">&#39;utf-8&#39;</span><span class="p">),</span>
+   <span class="mi">2</span><span class="o">:</span><span class="s1">&#39;华沙超市买波兰饺子，嵘姐一共为我们花费42，3&#39;</span><span class="p">.</span><span class="nx">decode</span><span class="p">(</span><span class="s1">&#39;utf-8&#39;</span><span class="p">),</span>
+   <span class="mi">3</span><span class="o">:</span><span class="s1">&#39;华沙耶诞晚餐喝汤吃热狗烤土豆一共花了88，3，宪哥20，嵘姐68，3&#39;</span><span class="p">.</span><span class="nx">decode</span><span class="p">(</span><span class="s1">&#39;utf-8&#39;</span><span class="p">),</span>
+   <span class="mi">4</span><span class="o">:</span><span class="s1">&#39;华沙耶诞喝咖啡吃煎饼，宪哥为我们花费9.69欧元(43兹罗提) 1欧手续费&#39;</span><span class="p">.</span><span class="nx">decode</span><span class="p">(</span><span class="s1">&#39;utf-8&#39;</span><span class="p">),</span>
+   <span class="mi">5</span><span class="o">:</span><span class="s1">&#39;华沙到克拉科夫火车票，宪哥为我俩花费84兹罗提&#39;</span><span class="p">.</span><span class="nx">decode</span><span class="p">(</span><span class="s1">&#39;utf-8&#39;</span><span class="p">),</span>
+   <span class="mi">6</span><span class="o">:</span><span class="s1">&#39;克拉科夫，买集中营和肖邦音乐会门票，宪哥花费109.27欧元 1欧手续费&#39;</span><span class="p">.</span><span class="nx">decode</span><span class="p">(</span><span class="s1">&#39;utf-8&#39;</span><span class="p">),</span>
+   <span class="mi">7</span><span class="o">:</span><span class="s1">&#39;克拉科夫，耶诞市场，我为三人买香肠17，41，买热香肠10，买烤肉14，6&#39;</span><span class="p">.</span><span class="nx">decode</span><span class="p">(</span><span class="s1">&#39;utf-8&#39;</span><span class="p">),</span>
+   <span class="mi">8</span><span class="o">:</span><span class="s1">&#39;克拉科夫koko晚饭，宪哥给三人掏了58，5&#39;</span><span class="p">.</span><span class="nx">decode</span><span class="p">(</span><span class="s1">&#39;utf-8&#39;</span><span class="p">),</span>
+   <span class="mi">9</span><span class="o">:</span><span class="s1">&#39;克拉科夫家乐福，我为三人花费54，3&#39;</span><span class="p">.</span><span class="nx">decode</span><span class="p">(</span><span class="s1">&#39;utf-8&#39;</span><span class="p">),</span>
+   <span class="mi">10</span><span class="o">:</span><span class="s1">&#39;克拉科夫，耶诞市场，买烤肉，嵘姐为三人花费91，8&#39;</span><span class="p">.</span><span class="nx">decode</span><span class="p">(</span><span class="s1">&#39;utf-8&#39;</span><span class="p">),</span>
+   <span class="mi">11</span><span class="o">:</span><span class="s1">&#39;克拉科夫大商场，买雪糕，嵘姐为三人花费18&#39;</span><span class="p">.</span><span class="nx">decode</span><span class="p">(</span><span class="s1">&#39;utf-8&#39;</span><span class="p">),</span>
+   <span class="mi">12</span><span class="o">:</span><span class="s1">&#39;克拉科夫24小时邮局，我借嵘姐15买邮票&#39;</span><span class="p">.</span><span class="nx">decode</span><span class="p">(</span><span class="s1">&#39;utf-8&#39;</span><span class="p">),</span>
+   <span class="mi">13</span><span class="o">:</span><span class="s1">&#39;克拉科夫，公车，嵘姐为三人花费4，2&#39;</span><span class="p">.</span><span class="nx">decode</span><span class="p">(</span><span class="s1">&#39;utf-8&#39;</span><span class="p">),</span>
+   <span class="mi">14</span><span class="o">:</span><span class="s1">&#39;克拉科夫，家乐福，我为三人买早饭花费15，25&#39;</span><span class="p">.</span><span class="nx">decode</span><span class="p">(</span><span class="s1">&#39;utf-8&#39;</span><span class="p">),</span>
+   <span class="mi">15</span><span class="o">:</span><span class="s1">&#39;克拉科夫，青旅，我为三人花费289，6&#39;</span><span class="p">.</span><span class="nx">decode</span><span class="p">(</span><span class="s1">&#39;utf-8&#39;</span><span class="p">),</span>
+   <span class="mi">16</span><span class="o">:</span><span class="s1">&#39;克拉科夫，我借给嵘姐200，借给宪哥100&#39;</span><span class="p">.</span><span class="nx">decode</span><span class="p">(</span><span class="s1">&#39;utf-8&#39;</span><span class="p">)</span>
+<span class="p">}</span>
+
+<span class="err">#</span><span class="nx">pay</span> <span class="k">in</span> <span class="nx">porland</span> <span class="nx">money</span>
+<span class="nx">payments</span> <span class="o">=</span> <span class="cp">[</span>
+    <span class="p">{</span> <span class="s2">&quot;id&quot;</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span> <span class="s2">&quot;pay&quot;</span><span class="p">:</span><span class="err">[</span><span class="mi">250</span><span class="p">,</span><span class="mi">140</span><span class="p">,</span><span class="mi">30</span><span class="cp">]</span><span class="p">},</span> 
+    <span class="p">{</span> <span class="s2">&quot;id&quot;</span><span class="o">:</span><span class="mi">2</span><span class="p">,</span> <span class="s2">&quot;pay&quot;</span><span class="o">:</span><span class="cp">[</span><span class="mi">0</span><span class="p">,</span><span class="mf">42.3</span><span class="p">,</span><span class="mi">0</span><span class="cp">]</span><span class="p">},</span> 
+    <span class="p">{</span> <span class="s2">&quot;id&quot;</span><span class="o">:</span><span class="mi">3</span><span class="p">,</span> <span class="s2">&quot;pay&quot;</span><span class="o">:</span><span class="cp">[</span><span class="mi">0</span><span class="p">,</span><span class="mf">68.3</span><span class="p">,</span><span class="mi">20</span><span class="cp">]</span><span class="p">},</span>
+    <span class="p">{</span> <span class="s2">&quot;id&quot;</span><span class="o">:</span><span class="mi">7</span><span class="p">,</span> <span class="s2">&quot;pay&quot;</span><span class="o">:</span><span class="cp">[</span><span class="mi">42</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="cp">]</span><span class="p">},</span>
+    <span class="p">{</span> <span class="s2">&quot;id&quot;</span><span class="o">:</span><span class="mi">8</span><span class="p">,</span> <span class="s2">&quot;pay&quot;</span><span class="o">:</span><span class="cp">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mf">58.5</span><span class="cp">]</span><span class="p">},</span>
+    <span class="p">{</span> <span class="s2">&quot;id&quot;</span><span class="o">:</span><span class="mi">9</span><span class="p">,</span> <span class="s2">&quot;pay&quot;</span><span class="o">:</span><span class="cp">[</span><span class="mf">54.3</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="cp">]</span><span class="p">},</span>
+    <span class="p">{</span> <span class="s2">&quot;id&quot;</span><span class="o">:</span><span class="mi">10</span><span class="p">,</span> <span class="s2">&quot;pay&quot;</span><span class="o">:</span><span class="cp">[</span><span class="mi">0</span><span class="p">,</span><span class="mf">91.8</span><span class="p">,</span><span class="mi">0</span><span class="cp">]</span><span class="p">},</span>
+    <span class="p">{</span> <span class="s2">&quot;id&quot;</span><span class="o">:</span><span class="mi">11</span><span class="p">,</span> <span class="s2">&quot;pay&quot;</span><span class="o">:</span><span class="cp">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">18</span><span class="p">,</span><span class="mi">0</span><span class="cp">]</span><span class="p">},</span>
+    <span class="p">{</span> <span class="s2">&quot;id&quot;</span><span class="o">:</span><span class="mi">13</span><span class="p">,</span> <span class="s2">&quot;pay&quot;</span><span class="o">:</span><span class="cp">[</span><span class="mi">0</span><span class="p">,</span><span class="mf">4.2</span><span class="p">,</span><span class="mi">0</span><span class="cp">]</span><span class="p">},</span>
+    <span class="p">{</span> <span class="s2">&quot;id&quot;</span><span class="o">:</span><span class="mi">14</span><span class="p">,</span> <span class="s2">&quot;pay&quot;</span><span class="o">:</span><span class="cp">[</span><span class="mf">15.25</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="cp">]</span><span class="p">},</span>
+    <span class="p">{</span> <span class="s2">&quot;id&quot;</span><span class="o">:</span><span class="mi">15</span><span class="p">,</span> <span class="s2">&quot;pay&quot;</span><span class="o">:</span><span class="cp">[</span><span class="mf">289.6</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="cp">]</span><span class="p">}</span>
+<span class="p">]</span>
+
+<span class="nx">def</span> <span class="nx">calculation</span><span class="p">(</span><span class="nx">f</span><span class="p">)</span><span class="o">:</span>
+  <span class="nx">def</span> <span class="kd">function</span><span class="p">(</span><span class="nx">l</span><span class="p">)</span><span class="o">:</span>
+    <span class="k">return</span> <span class="nx">map</span><span class="p">(</span><span class="nx">f</span><span class="p">,</span> <span class="nx">l</span><span class="p">)</span>
+  <span class="k">return</span> <span class="kd">function</span>
+
+<span class="nx">round_format</span> <span class="o">=</span> <span class="nx">calculation</span><span class="p">(</span><span class="nx">lambda</span> <span class="nx">x</span><span class="o">:</span><span class="nx">round</span><span class="p">(</span><span class="nx">x</span><span class="p">,</span><span class="mi">2</span><span class="p">))</span>
+
+<span class="err">#先算出每个人的消费总额</span>
+<span class="nx">def</span> <span class="nx">sum_total</span><span class="p">(</span><span class="nx">n</span><span class="p">,</span> <span class="nx">payments</span><span class="p">)</span><span class="o">:</span>
+  <span class="nx">pays</span> <span class="o">=</span> <span class="cp">[]</span>
+  <span class="k">for</span> <span class="nx">i</span> <span class="k">in</span> <span class="nx">range</span><span class="p">(</span><span class="nx">n</span><span class="p">)</span><span class="o">:</span>
+    <span class="nx">pays</span><span class="p">.</span><span class="nx">append</span><span class="p">(</span><span class="nx">sum</span><span class="p">(</span><span class="cp">[</span><span class="nx">pay</span><span class="err">[</span><span class="nx">i</span><span class="cp">]</span> <span class="k">for</span> <span class="nx">pay</span> <span class="k">in</span> <span class="nx">payments</span><span class="p">]))</span>
+  <span class="k">return</span> <span class="nx">pays</span>
+
+<span class="nx">pays</span> <span class="o">=</span> <span class="nx">round_format</span><span class="p">(</span><span class="nx">sum_total</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="cp">[</span><span class="nx">pay</span><span class="err">[</span><span class="s1">&#39;pay&#39;</span><span class="cp">]</span> <span class="k">for</span> <span class="nx">pay</span> <span class="k">in</span> <span class="nx">payments</span><span class="p">]))</span>
+
+<span class="err">#算出每个人的平均消费</span>
+<span class="nx">average</span> <span class="o">=</span> <span class="nx">sum</span><span class="p">(</span><span class="nx">pays</span><span class="p">)</span> <span class="o">/</span> <span class="nx">len</span><span class="p">(</span><span class="nx">pays</span><span class="p">)</span>
+
+<span class="err">#除去平均消费之后的情况</span>
+<span class="nx">minus_average</span> <span class="o">=</span> <span class="nx">calculation</span><span class="p">(</span><span class="nx">lambda</span> <span class="nx">x</span><span class="o">:</span> <span class="nx">x</span> <span class="o">-</span> <span class="nx">average</span><span class="p">)</span>
+<span class="nx">pays</span> <span class="o">=</span> <span class="nx">round_format</span><span class="p">(</span><span class="nx">minus_average</span><span class="p">(</span><span class="nx">pays</span><span class="p">))</span>
+
+<span class="err">#</span><span class="nx">TODO</span><span class="err">将</span><span class="mi">3</span><span class="err">人消费映射到两个人的相互关系</span>
+<span class="err">#波兰币部分</span>
+<span class="nx">debt</span> <span class="o">=</span> <span class="p">{}</span>
+<span class="nx">debt</span><span class="cp">[</span><span class="s1">&#39;12&#39;</span><span class="cp">]</span> <span class="o">=</span> <span class="mf">10.15</span>
+<span class="nx">debt</span><span class="cp">[</span><span class="s1">&#39;13&#39;</span><span class="cp">]</span> <span class="o">=</span> <span class="mf">266.25</span>
+
+<span class="nx">debt</span><span class="cp">[</span><span class="s1">&#39;12&#39;</span><span class="cp">]</span> <span class="o">-=</span> <span class="p">(</span><span class="mi">84</span> <span class="o">/</span> <span class="mi">2</span><span class="p">)</span> <span class="err">#</span><span class="mi">5</span>
+<span class="nx">debt</span><span class="cp">[</span><span class="s1">&#39;13&#39;</span><span class="cp">]</span> <span class="o">-=</span> <span class="mi">15</span> <span class="err">#</span><span class="mi">12</span>
+
+<span class="nx">debt</span><span class="cp">[</span><span class="s1">&#39;12&#39;</span><span class="cp">]</span> <span class="o">+=</span> <span class="mi">200</span> <span class="err">#</span><span class="mi">16</span>
+<span class="nx">debt</span><span class="cp">[</span><span class="s1">&#39;13&#39;</span><span class="cp">]</span> <span class="o">+=</span> <span class="mi">100</span> <span class="err">#</span><span class="mi">16</span>
+
+<span class="nx">euros</span> <span class="o">=</span> <span class="mf">10.69</span> <span class="o">+</span> <span class="mf">110.27</span>
+<span class="nx">average_eu</span> <span class="o">=</span> <span class="nx">round</span><span class="p">(</span><span class="nx">euros</span> <span class="o">/</span> <span class="mi">3</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span>
+
+<span class="nx">rate</span> <span class="o">=</span> <span class="mi">4</span>
+
+<span class="nx">print</span> <span class="s2">&quot;reng give zhu :&quot;</span> <span class="o">+</span> <span class="nx">str</span><span class="p">(</span><span class="nx">debt</span><span class="cp">[</span><span class="s1">&#39;12&#39;</span><span class="cp">]</span> <span class="o">/</span> <span class="nx">rate</span><span class="p">)</span>
+<span class="nx">print</span> <span class="s2">&quot;xian give zhu :&quot;</span> <span class="o">+</span> <span class="nx">str</span><span class="p">(</span><span class="nx">debt</span><span class="cp">[</span><span class="s1">&#39;13&#39;</span><span class="cp">]</span> <span class="o">/</span> <span class="nx">rate</span> <span class="o">-</span> <span class="nx">average_eu</span><span class="p">)</span>
+<span class="nx">print</span> <span class="s2">&quot;reng give xian :&quot;</span> <span class="o">+</span> <span class="nx">str</span><span class="p">(</span><span class="nx">average_eu</span><span class="p">)</span>
+
+
+
+<span class="err">```</span>
+</pre></div>
                  <div class="article-tag">
                 </div>
             </div>
